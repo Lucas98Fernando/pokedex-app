@@ -4,17 +4,21 @@ import 'package:pokedex/common/models/pokemon_model.dart';
 import 'package:pokedex/common/repository/pokemon_respository.dart';
 import 'package:pokedex/common/widgets/base_error_widget.dart';
 import 'package:pokedex/common/widgets/base_loading_widget.dart';
-import 'package:pokedex/presentation/details/container/details_container.dart';
-import 'package:pokedex/presentation/home/pages/home_page.dart';
+import 'package:pokedex/presentation/details/pages/details_page.dart';
 
-class HomeContainer extends StatelessWidget {
-  const HomeContainer({
+class DetailsProps {
+  DetailsProps({required this.name});
+  final String name;
+}
+
+class DetailsContainer extends StatelessWidget {
+  const DetailsContainer({
     super.key,
     required this.respository,
-    required this.onItemTap,
+    required this.props,
   });
   final IPokemonRepository respository;
-  final Function(String, DetailsProps) onItemTap;
+  final DetailsProps props;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +31,9 @@ class HomeContainer extends StatelessWidget {
 
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
-          return HomePage(
+          return DetailsPage(
+            name: props.name,
             pokemonsList: snapshot.data!,
-            onItemTap: onItemTap,
           );
         }
 

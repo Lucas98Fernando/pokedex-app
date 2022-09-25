@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeError extends StatelessWidget {
-  const HomeError({super.key, required this.error});
+class BaseError extends StatelessWidget {
+  const BaseError({super.key, required this.error});
   final String error;
 
   @override

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:pokedex/common/constraints/api_constraints.dart';
 import 'package:pokedex/common/exceptions/api_exceptions.dart';
@@ -23,7 +22,6 @@ class PokemonRespository implements IPokemonRepository {
 
       return data.map((e) => Pokemon.fromMap(e)).toList();
     } catch (error) {
-      print(error);
       throw ApiExceptions(message: 'Não foi possível encontrar os dados');
     }
   }
