@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:pokedex/common/exceptions/api_exceptions.dart';
 import 'package:pokedex/common/models/pokemon_model.dart';
 import 'package:pokedex/common/repository/pokemon_respository.dart';

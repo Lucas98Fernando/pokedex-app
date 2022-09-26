@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:pokedex/common/exceptions/api_exceptions.dart';
 import 'package:pokedex/common/models/pokemon_model.dart';
 import 'package:pokedex/common/repository/pokemon_respository.dart';
@@ -7,8 +7,8 @@ import 'package:pokedex/common/widgets/base_loading_widget.dart';
 import 'package:pokedex/presentation/details/pages/details_page.dart';
 
 class DetailsProps {
-  DetailsProps({required this.name});
-  final String name;
+  DetailsProps({required this.pokemon});
+  final Pokemon pokemon;
 }
 
 class DetailsContainer extends StatelessWidget {
@@ -32,7 +32,7 @@ class DetailsContainer extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
           return DetailsPage(
-            name: props.name,
+            pokemon: props.pokemon,
             pokemonsList: snapshot.data!,
           );
         }

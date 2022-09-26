@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/common/models/pokemon_model.dart';
 import 'package:pokedex/presentation/details/container/details_container.dart';
+import 'package:pokedex/presentation/home/widgets/pokemon_item_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -14,17 +15,22 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: pokemonsList.length,
-        itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            title: Text(pokemonsList[index].name),
-            onTap: () => onItemTap(
-              '/details',
-              DetailsProps(name: pokemonsList[index].name),
-            ),
-          );
-        },
+      appBar: AppBar(
+        title: const Text('Pokédex'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14),
+        child: GridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 14,
+          mainAxisSpacing: 14,
+          children: pokemonsList
+              .map((e) => PokemonItemWidget(
+                    pokemon: e,
+                    onTap: onItemTap,
+                  ))
+              .toList(),
+        ),
       ),
     );
   }

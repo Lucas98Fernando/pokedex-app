@@ -1,7 +1,7 @@
 class Pokemon {
   final int id;
   final String name;
-  final String image;
+  final String img;
   final String num;
   final List<String> type;
 
@@ -9,7 +9,7 @@ class Pokemon {
     return Pokemon(
       id: json['id'],
       name: json['name'] ?? '',
-      image: json['image'] ?? '',
+      img: json['img'] ?? '',
       num: json['num'],
       type: (json['type'] as List<dynamic>).map((e) => e as String).toList(),
     );
@@ -18,7 +18,7 @@ class Pokemon {
   Pokemon({
     required this.id,
     required this.name,
-    required this.image,
+    required this.img,
     required this.num,
     required this.type,
   });
