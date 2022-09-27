@@ -9,6 +9,7 @@ class HomePage extends StatelessWidget {
     required this.pokemonsList,
     required this.onItemTap,
   });
+
   final List<Pokemon> pokemonsList;
   final Function(String, DetailsProps) onItemTap;
 
@@ -16,7 +17,25 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pokédex'),
+        title: Text(
+          'Pokédex',
+          style: TextStyle(
+            color: Colors.black.withOpacity(0.7),
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+          ),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.menu,
+              color: Colors.black.withOpacity(0.7),
+            ),
+            onPressed: () {},
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14),
@@ -28,6 +47,7 @@ class HomePage extends StatelessWidget {
               .map((e) => PokemonItemWidget(
                     pokemon: e,
                     onTap: onItemTap,
+                    index: pokemonsList.indexOf(e),
                   ))
               .toList(),
         ),

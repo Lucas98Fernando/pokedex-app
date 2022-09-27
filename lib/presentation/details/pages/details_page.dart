@@ -1,45 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/common/models/pokemon_model.dart';
+import 'package:pokedex/presentation/details/widgets/details_app_bar_widget.dart';
+import 'package:pokedex/presentation/details/widgets/details_card_widget.dart';
 
 class DetailsPage extends StatelessWidget {
   const DetailsPage({
     super.key,
     required this.pokemon,
     required this.pokemonsList,
+    required this.onBack,
+    required this.pokemonController,
+    required this.onChangePokemon,
   });
+
   final Pokemon pokemon;
   final List<Pokemon> pokemonsList;
+  final VoidCallback onBack;
+  final PageController pokemonController;
+  final ValueChanged<Pokemon> onChangePokemon;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(pokemon.name),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 400,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 30),
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: pokemonsList
-                      .map(
-                        (e) => Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(e.name),
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
-            ),
-          ],
-        ),
+      body: Stack(
+        children: [
+          DetailsAppBarWidget(
+            pokemon: pokemon,
+            onBack: onBack,
+          ),
+          DetailsCardWidget(
+            pokemon: pokemon,
+            pokemonsList: pokemonsList,
+            pokemonController: pokemonController,
+            onChangePokemon: onChangePokemon,
+          )
+        ],
       ),
     );
   }

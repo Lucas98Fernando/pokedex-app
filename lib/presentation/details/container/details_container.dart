@@ -7,23 +7,48 @@ import 'package:pokedex/common/widgets/base_loading_widget.dart';
 import 'package:pokedex/presentation/details/pages/details_page.dart';
 
 class DetailsProps {
-  DetailsProps({required this.pokemon});
+  DetailsProps({required this.pokemon, this.index = 0});
+
   final Pokemon pokemon;
+  final int? index;
 }
 
-class DetailsContainer extends StatelessWidget {
+class DetailsContainer extends StatefulWidget {
   const DetailsContainer({
     super.key,
     required this.respository,
     required this.props,
+    required this.onBack,
   });
+
   final IPokemonRepository respository;
   final DetailsProps props;
+  final VoidCallback onBack;
+
+  @override
+  State<DetailsContainer> createState() => _DetailsContainerState();
+}
+
+class _DetailsContainerState extends State<DetailsContainer> {
+  late PageController _pokemonController;
+  late Future<List<Pokemon>>? _futurePokemons;
+  Pokemon? _pokemon;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _futurePokemons = widget.respository.getAllPokemons();
+    _pokemonController = PageController(
+      viewportFraction: 0.5,
+      initialPage: widget.props.index!,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Pokemon>>(
-      future: respository.getAllPokemons(),
+      future: _futurePokemons,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const BaseLoading();
@@ -31,9 +56,18 @@ class DetailsContainer extends StatelessWidget {
 
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
+          _pokemon ??= widget.props.pokemon;
+
           return DetailsPage(
-            pokemon: props.pokemon,
+            pokemon: _pokemon!,
             pokemonsList: snapshot.data!,
+            pokemonController: _pokemonController,
+            onBack: widget.onBack,
+            onChangePokemon: (Pokemon value) {
+              setState(() {
+                _pokemon = value;
+              });
+            },
           );
         }
 

@@ -4,7 +4,11 @@ import 'package:pokedex/presentation/details/container/details_container.dart';
 import 'package:pokedex/presentation/home/container/home_container.dart';
 
 class Routes extends StatelessWidget {
-  const Routes({super.key, required this.repository});
+  const Routes({
+    super.key,
+    required this.repository,
+  });
+
   final PokemonRespository repository;
 
   @override
@@ -30,6 +34,7 @@ class Routes extends StatelessWidget {
                 return DetailsContainer(
                   respository: repository,
                   props: (settings.arguments as DetailsProps),
+                  onBack: () => Navigator.of(context).pop(),
                 );
               },
             );
