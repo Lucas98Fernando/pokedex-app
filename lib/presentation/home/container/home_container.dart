@@ -13,6 +13,7 @@ class HomeContainer extends StatelessWidget {
     required this.respository,
     required this.onItemTap,
   });
+
   final IPokemonRepository respository;
   final Function(String, DetailsProps) onItemTap;
 

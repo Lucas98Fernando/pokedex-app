@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokedex/common/constraints/pokemon_color_constraints.dart';
 import 'package:pokedex/common/models/pokemon_model.dart';
 
@@ -61,14 +62,17 @@ class DetailsCardWidget extends StatelessWidget {
               child: PageView(
                 onPageChanged: (index) => onChangePokemon(pokemonsList[index]),
                 controller: pokemonController,
-                children: pokemonsList
-                    .map(
-                      (e) => Opacity(
-                        opacity: e != pokemon ? 0.4 : 1,
-                        child: Image.network(e.img, fit: BoxFit.contain),
-                      ),
-                    )
-                    .toList(),
+                children: pokemonsList.map((e) {
+                  bool isDifferent = e.name != pokemon.name;
+                  return Opacity(
+                    opacity: isDifferent ? 0.4 : 1,
+                    child: SvgPicture.network(
+                      e.img,
+                      fit: BoxFit.contain,
+                      color: isDifferent ? Colors.black.withOpacity(0.4) : null,
+                    ),
+                  );
+                }).toList(),
               ),
             ),
           ],

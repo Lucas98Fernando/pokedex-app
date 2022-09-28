@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokedex/common/constraints/pokemon_color_constraints.dart';
 import 'package:pokedex/common/models/pokemon_model.dart';
 import 'package:pokedex/presentation/details/container/details_container.dart';
@@ -60,7 +61,7 @@ class PokemonItemWidget extends StatelessWidget {
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,9 +71,9 @@ class PokemonItemWidget extends StatelessWidget {
                   ),
                   Flexible(
                     child: SizedBox(
-                      height: 120,
-                      width: 120,
-                      child: Image.network(
+                      height: 95,
+                      width: 95,
+                      child: SvgPicture.network(
                         pokemon.img,
                       ),
                     ),

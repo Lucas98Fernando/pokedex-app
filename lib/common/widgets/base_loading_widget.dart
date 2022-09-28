@@ -5,9 +5,19 @@ class BaseLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: CircularProgressIndicator(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: Image.asset('assets/images/pokeball.png'),
+            ),
+            const CircularProgressIndicator(),
+          ],
+        ),
       ),
     );
   }
