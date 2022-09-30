@@ -40,7 +40,7 @@ class _DetailsContainerState extends State<DetailsContainer> {
 
     _futurePokemons = widget.respository.getAllPokemons();
     _pokemonController = PageController(
-      viewportFraction: 0.5,
+      viewportFraction: 0.6,
       initialPage: widget.props.index!,
     );
   }

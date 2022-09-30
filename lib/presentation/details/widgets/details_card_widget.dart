@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokedex/common/constraints/pokemon_color_constraints.dart';
 import 'package:pokedex/common/models/pokemon_model.dart';
+import 'package:pokedex/presentation/home/widgets/pokemon_types_widget.dart';
 
 class DetailsCardWidget extends StatelessWidget {
   const DetailsCardWidget({
@@ -31,27 +32,41 @@ class DetailsCardWidget extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 26),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              child: Column(
                 children: [
-                  Flexible(
-                    child: Text(
-                      pokemon.name,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 34,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          pokemon.name,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 34,
+                          ),
+                        ),
                       ),
-                    ),
+                      Text(
+                        '#${pokemon.num}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    '#${pokemon.num}',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
+                  Row(
+                    children: pokemon.type
+                        .map(
+                          (e) => Padding(
+                            padding: const EdgeInsets.only(right: 5),
+                            child: PokemonTypesWidget(type: e),
+                          ),
+                        )
+                        .toList(),
                   ),
                 ],
               ),

@@ -25,6 +25,20 @@ class DetailsAppBarWidget extends StatelessWidget {
           onPressed: onBack,
           icon: const Icon(Icons.chevron_left),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(
+              right: 10,
+            ),
+            child: IconButton(
+              icon: const Icon(
+                Icons.favorite_border_outlined,
+                color: Colors.white,
+              ),
+              onPressed: () {},
+            ),
+          )
+        ],
       ),
     );
   }
