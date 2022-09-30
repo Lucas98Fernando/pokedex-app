@@ -1,6 +1,6 @@
-# pokedex
+# Pokédex <img src="https://user-images.githubusercontent.com/55029511/193171511-f675557e-6303-4f34-aa67-b2df4bab6ca8.png" width="30" style="margin: 1rem 0 0" />
 
-A new Flutter project.
+Pokédex app with Flutter
 
 ## Getting Started
 
