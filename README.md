@@ -2,15 +2,20 @@
 
 Pokédex app with Flutter
 
-## Getting Started
+<p>
+  <img src="https://user-images.githubusercontent.com/55029511/193428295-12fef28f-6a32-402b-94b2-d90a376ef178.png" width="300">
+  <img src="https://user-images.githubusercontent.com/55029511/193428300-77eb1c1a-738e-449e-947e-ce59851276b9.png" width="300">
+</p>
 
-This project is a starting point for a Flutter application.
+## Getting Started :rocket:
 
-A few resources to get you started if this is your first Flutter project:
+#### :one: Install dependencies
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```flutter
+flutter pub get
+```
+#### :two: Run app
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```flutter
+flutter run
+```
