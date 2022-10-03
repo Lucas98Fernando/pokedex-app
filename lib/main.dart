@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pokedex/common/repository/pokemon_respository.dart';
 import 'package:pokedex/presentation/routes.dart';
 
@@ -12,10 +13,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return MaterialApp(
       title: 'Pokédex',
       theme: ThemeData(
         primarySwatch: Colors.red,
+        textTheme: GoogleFonts.poppinsTextTheme(textTheme),
       ),
       home: Routes(
         repository: PokemonRespository(

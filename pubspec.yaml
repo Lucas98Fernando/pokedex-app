@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
   flutter_svg: ^1.1.5
+  flutter_launcher_icons: ^0.10.0
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +51,19 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+
+flutter_icons:
+  android: "pokedex_icon"
+  ios: true
+  image_path: "assets/images/pokeball.png"
+  min_sdk_android: 21
+  web:
+    generate: true
+    image_path: "assets/images/pokeball.png"
+  windows:
+    generate: true
+    image_path: "assets/images/pokeball.png"
+    icon_size: 48
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
