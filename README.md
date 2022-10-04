@@ -3,8 +3,8 @@
 Pokédex app with Flutter
 
 <p>
-  <img src="https://user-images.githubusercontent.com/55029511/193428295-12fef28f-6a32-402b-94b2-d90a376ef178.png" width="300">
-  <img src="https://user-images.githubusercontent.com/55029511/193428300-77eb1c1a-738e-449e-947e-ce59851276b9.png" width="300">
+  <img src="https://user-images.githubusercontent.com/55029511/193708816-2495ab30-84c2-4bd4-8516-f512e1848d86.png" width="300">
+  <img src="https://user-images.githubusercontent.com/55029511/193708869-47caa83d-1690-4956-8c1a-a1b45add5d45.png" width="300">
 </p>
 
 ## Getting Started :rocket:
