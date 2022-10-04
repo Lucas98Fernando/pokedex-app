@@ -44,7 +44,7 @@ class PokemonItemWidget extends StatelessWidget {
                       pokemon.name,
                       style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -53,7 +53,7 @@ class PokemonItemWidget extends StatelessWidget {
                     '#${pokemon.num}',
                     style: TextStyle(
                       color: Colors.black.withOpacity(0.3),
-                      fontSize: 14,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

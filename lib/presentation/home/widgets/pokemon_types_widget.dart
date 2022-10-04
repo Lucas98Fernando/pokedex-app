@@ -16,7 +16,10 @@ class PokemonTypesWidget extends StatelessWidget {
         padding: const EdgeInsets.all(5),
         child: Text(
           type,
-          style: const TextStyle(color: Colors.white, fontSize: 12),
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 10,
+          ),
         ),
       ),
     );
