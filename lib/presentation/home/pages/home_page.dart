@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/common/models/pokemon_model.dart';
 import 'package:pokedex/presentation/details/container/details_container.dart';
 import 'package:pokedex/presentation/home/widgets/pokemon_item_widget.dart';
+import 'package:pokedex/presentation/home/widgets/search_action_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -52,6 +53,7 @@ class HomePage extends StatelessWidget {
               .toList(),
         ),
       ),
+      floatingActionButton: const SearchActionButton(),
     );
   }
 }
