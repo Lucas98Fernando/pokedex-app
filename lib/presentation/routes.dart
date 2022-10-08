@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/common/repository/pokemon_respository.dart';
+import 'package:pokedex/common/repository/pokemon_repository.dart';
 import 'package:pokedex/presentation/details/container/details_container.dart';
 import 'package:pokedex/presentation/home/container/home_container.dart';
 
@@ -9,7 +9,7 @@ class Routes extends StatelessWidget {
     required this.repository,
   });
 
-  final PokemonRespository repository;
+  final PokemonRepository repository;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +21,12 @@ class Routes extends StatelessWidget {
             return MaterialPageRoute(
               builder: (context) {
                 return HomeContainer(
-                  respository: repository,
+                  repository: repository,
                   onItemTap: (route, props) {
-                    Navigator.of(context).pushNamed(route, arguments: props);
+                    Navigator.of(context).pushNamed(
+                      route,
+                      arguments: props,
+                    );
                   },
                 );
               },
@@ -32,7 +35,7 @@ class Routes extends StatelessWidget {
             return MaterialPageRoute(
               builder: (context) {
                 return DetailsContainer(
-                  respository: repository,
+                  repository: repository,
                   props: (settings.arguments as DetailsProps),
                   onBack: () => Navigator.of(context).pop(),
                 );

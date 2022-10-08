@@ -8,10 +8,10 @@ abstract class IPokemonRepository {
   Future<List<Pokemon>> getAllPokemons();
 }
 
-class PokemonRespository implements IPokemonRepository {
+class PokemonRepository implements IPokemonRepository {
   final Dio dio;
 
-  PokemonRespository({required this.dio});
+  PokemonRepository({required this.dio});
 
   @override
   Future<List<Pokemon>> getAllPokemons() async {
