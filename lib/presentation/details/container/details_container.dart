@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/common/exceptions/api_exceptions.dart';
 import 'package:pokedex/common/models/pokemon_model.dart';
-import 'package:pokedex/common/repository/pokemon_repository.dart';
+import 'package:pokedex/common/store/pokemon_store.dart';
 import 'package:pokedex/common/widgets/base_error_widget.dart';
 import 'package:pokedex/common/widgets/base_loading_widget.dart';
 import 'package:pokedex/presentation/details/pages/details_page.dart';
@@ -16,12 +16,10 @@ class DetailsProps {
 class DetailsContainer extends StatefulWidget {
   const DetailsContainer({
     super.key,
-    required this.repository,
     required this.props,
     required this.onBack,
   });
 
-  final IPokemonRepository repository;
   final DetailsProps props;
   final VoidCallback onBack;
 
@@ -33,12 +31,13 @@ class _DetailsContainerState extends State<DetailsContainer> {
   late PageController _pokemonController;
   late Future<List<Pokemon>>? _futurePokemons;
   Pokemon? _pokemon;
+  late PokemonStore pokemonStore = PokemonStore();
 
   @override
   void initState() {
     super.initState();
 
-    _futurePokemons = widget.repository.getAllPokemons();
+    _futurePokemons = pokemonStore.fetchPokemons();
     _pokemonController = PageController(
       viewportFraction: 0.6,
       initialPage: widget.props.index!,

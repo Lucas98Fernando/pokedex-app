@@ -15,7 +15,14 @@ Pokédex app with Flutter
 ```flutter
 flutter pub get
 ```
-#### :two: Run app
+
+### :two: Generate files from store 
+
+```flutter
+flutter packages pub run build_runner build
+```
+
+#### :three: Run app
 
 ```flutter
 flutter run

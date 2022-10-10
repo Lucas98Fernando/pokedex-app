@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/common/repository/pokemon_repository.dart';
 import 'package:pokedex/presentation/details/container/details_container.dart';
-import 'package:pokedex/presentation/home/container/home_container.dart';
+import 'package:pokedex/presentation/home/pages/home_page.dart';
 
 class Routes extends StatelessWidget {
   const Routes({
@@ -20,8 +20,7 @@ class Routes extends StatelessWidget {
           case '/':
             return MaterialPageRoute(
               builder: (context) {
-                return HomeContainer(
-                  repository: repository,
+                return HomePage(
                   onItemTap: (route, props) {
                     Navigator.of(context).pushNamed(
                       route,
@@ -35,7 +34,6 @@ class Routes extends StatelessWidget {
             return MaterialPageRoute(
               builder: (context) {
                 return DetailsContainer(
-                  repository: repository,
                   props: (settings.arguments as DetailsProps),
                   onBack: () => Navigator.of(context).pop(),
                 );
