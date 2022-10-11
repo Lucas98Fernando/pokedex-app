@@ -2,8 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/common/store/pokemon_store.dart';
 import 'package:provider/provider.dart';
 
-class ModalBottomSheet extends StatelessWidget {
+class ModalBottomSheet extends StatefulWidget {
   const ModalBottomSheet({super.key});
+
+  @override
+  State<ModalBottomSheet> createState() => _ModalBottomSheetState();
+}
+
+class _ModalBottomSheetState extends State<ModalBottomSheet> {
+  TextEditingController pokemonNameController = TextEditingController();
+
+  @override
+  void dispose() {
+    pokemonNameController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,15 +55,18 @@ class ModalBottomSheet extends StatelessWidget {
                     )
                   ],
                 ),
-                const Form(
+                Form(
                   child: TextField(
+                    controller: pokemonNameController,
                     obscureText: false,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Name',
                       prefixIcon: Icon(
                         Icons.pets,
                       ),
                     ),
+                    onChanged: (value) =>
+                        pokemonStore.setPokemonNameFilter(value),
                   ),
                 ),
                 const SizedBox(
@@ -61,7 +77,7 @@ class ModalBottomSheet extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () => {
                       pokemonStore.fetchPokemons(
-                        pokemonName: 'Pikachu',
+                        pokemonName: pokemonStore.pokemonFilter,
                       ),
                       Navigator.pop(context),
                     },

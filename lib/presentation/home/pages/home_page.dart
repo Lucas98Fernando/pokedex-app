@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:pokedex/common/store/pokemon_store.dart';
+import 'package:pokedex/common/widgets/base_error_widget.dart';
 import 'package:pokedex/common/widgets/base_loading_widget.dart';
 import 'package:pokedex/presentation/details/container/details_container.dart';
 import 'package:pokedex/presentation/home/widgets/modal_bottom_sheet.dart';
@@ -49,8 +50,12 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Observer(
         builder: (_) {
-          if (pokemonStore.allPokemons.isEmpty) {
+          if (pokemonStore.isLoading) {
             return const BaseLoading();
+          }
+
+          if (pokemonStore.allPokemons.isEmpty) {
+            return const BaseError(error: 'Nenhum pokémon encontrado');
           }
 
           return Padding(

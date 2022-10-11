@@ -22,7 +22,7 @@ class PokemonItemWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () => onTap(
         '/details',
-        DetailsProps(pokemon: pokemon, index: index),
+        DetailsProps(pokemon: pokemon, index: index, id: pokemon.id),
       ),
       child: Container(
         decoration: BoxDecoration(

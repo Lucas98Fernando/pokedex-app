@@ -7,10 +7,15 @@ import 'package:pokedex/common/widgets/base_loading_widget.dart';
 import 'package:pokedex/presentation/details/pages/details_page.dart';
 
 class DetailsProps {
-  DetailsProps({required this.pokemon, this.index = 0});
+  DetailsProps({
+    required this.pokemon,
+    this.index = 0,
+    this.id = 0,
+  });
 
   final Pokemon pokemon;
   final int? index;
+  final int? id;
 }
 
 class DetailsContainer extends StatefulWidget {
@@ -40,7 +45,7 @@ class _DetailsContainerState extends State<DetailsContainer> {
     _futurePokemons = pokemonStore.fetchPokemons();
     _pokemonController = PageController(
       viewportFraction: 0.6,
-      initialPage: widget.props.index!,
+      initialPage: widget.props.id! - 1,
     );
   }
 

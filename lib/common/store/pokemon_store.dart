@@ -11,15 +11,29 @@ abstract class PokemonStoreBase with Store {
   @observable
   List<Pokemon> allPokemons = [];
 
+  @observable
+  String pokemonFilter = '';
+
+  @observable
+  bool isLoading = false;
+
   @action
   Future<List<Pokemon>> fetchPokemons({String? pokemonName}) async {
+    setLoading(true);
     final response =
         await PokemonRepository(dio: Dio()).getAllPokemons(pokemonName);
 
     setPokemons(response);
+    setLoading(false);
     return response;
   }
 
   @action
   void setPokemons(value) => allPokemons = value;
+
+  @action
+  setPokemonNameFilter(String value) => pokemonFilter = value;
+
+  @action
+  setLoading(bool value) => isLoading = value;
 }
