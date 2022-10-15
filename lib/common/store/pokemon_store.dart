@@ -12,27 +12,47 @@ abstract class PokemonStoreBase with Store {
   List<Pokemon> allPokemons = [];
 
   @observable
-  String pokemonFilter = '';
+  List<Pokemon> pokemonsFiltered = [];
+
+  @observable
+  String pokemonNameFilter = '';
 
   @observable
   bool isLoading = false;
 
   @action
-  Future<List<Pokemon>> fetchPokemons({String? pokemonName}) async {
+  Future<List<Pokemon>> fetchPokemons() async {
     setLoading(true);
-    final response =
-        await PokemonRepository(dio: Dio()).getAllPokemons(pokemonName);
+    if (allPokemons.isEmpty) {
+      final response = await PokemonRepository(dio: Dio()).getAllPokemons();
+      setPokemons(response);
+      setPokemonsFiltered(response);
+      setLoading(false);
+      return response;
+    } else {
+      setLoading(false);
+      setPokemonsFiltered(allPokemons);
+      return allPokemons;
+    }
+  }
 
-    setPokemons(response);
-    setLoading(false);
-    return response;
+  @action
+  List<Pokemon> getPokemonFiltered({required String pokemonName}) {
+    final pokemonsFiltered =
+        allPokemons.where((element) => element.name == pokemonName).toList();
+
+    setPokemonsFiltered(pokemonsFiltered);
+    return pokemonsFiltered;
   }
 
   @action
   void setPokemons(value) => allPokemons = value;
 
   @action
-  setPokemonNameFilter(String value) => pokemonFilter = value;
+  void setPokemonsFiltered(value) => pokemonsFiltered = value;
+
+  @action
+  setPokemonNameFilter(String value) => pokemonNameFilter = value;
 
   @action
   setLoading(bool value) => isLoading = value;

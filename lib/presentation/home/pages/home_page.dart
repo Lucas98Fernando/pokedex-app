@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
             return const BaseLoading();
           }
 
-          if (pokemonStore.allPokemons.isEmpty) {
+          if (pokemonStore.pokemonsFiltered.isEmpty) {
             return const BaseError(error: 'Nenhum pokémon encontrado');
           }
 
@@ -64,11 +64,11 @@ class _HomePageState extends State<HomePage> {
               crossAxisCount: 2,
               crossAxisSpacing: 14,
               mainAxisSpacing: 14,
-              children: pokemonStore.allPokemons
+              children: pokemonStore.pokemonsFiltered
                   .map((e) => PokemonItemWidget(
                         pokemon: e,
                         onTap: widget.onItemTap,
-                        index: pokemonStore.allPokemons.indexOf(e),
+                        index: pokemonStore.pokemonsFiltered.indexOf(e),
                       ))
                   .toList(),
             ),

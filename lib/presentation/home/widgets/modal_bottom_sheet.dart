@@ -21,6 +21,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
   @override
   Widget build(BuildContext context) {
     final pokemonStore = Provider.of<PokemonStore>(context);
+    pokemonNameController.text = pokemonStore.pokemonNameFilter;
 
     return SingleChildScrollView(
       child: Padding(
@@ -76,8 +77,8 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () => {
-                      pokemonStore.fetchPokemons(
-                        pokemonName: pokemonStore.pokemonFilter,
+                      pokemonStore.getPokemonFiltered(
+                        pokemonName: pokemonStore.pokemonNameFilter,
                       ),
                       Navigator.pop(context),
                     },
@@ -100,6 +101,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                 GestureDetector(
                   onTap: () => {
                     pokemonStore.fetchPokemons(),
+                    pokemonStore.setPokemonNameFilter(''),
                     Navigator.pop(context),
                   },
                   child: const Center(
